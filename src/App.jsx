@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, Scissors, Menu, X } from 'lucide-react';
+import { Phone, MapPin, Clock, Scissors, Star, Menu, X } from 'lucide-react';
 
 const BarberShop = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -131,6 +131,35 @@ const BarberShop = () => {
               }}
             />
           ))}
+        </div>
+      </section>
+
+      {/* Quick Info Bar */}
+      <section className="bg-amber-500 py-6">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-around items-center gap-6 text-zinc-900">
+            <div className="flex items-center gap-3">
+              <Clock className="w-6 h-6" />
+              <div>
+                <p className="font-bold">Walk-ins Welcome</p>
+                <p className="text-sm">Mon-Sat: 9AM - 7PM</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <MapPin className="w-6 h-6" />
+              <div>
+                <p className="font-bold">Downtown Toronto</p>
+                <p className="text-sm">123 Street Name</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <Star className="w-6 h-6 fill-current" />
+              <div>
+                <p className="font-bold">4.9/5 Rating</p>
+                <p className="text-sm">500+ Reviews</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
