@@ -1,8 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Phone, Scissors, Menu, X } from 'lucide-react';
 
 const BarberShop = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&h=800&fit=crop",
+      title: "Classic Cuts",
+      subtitle: "Timeless style, modern precision"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1200&h=800&fit=crop",
+      title: "Expert Beard Work",
+      subtitle: "Shape and style with care"
+    },
+    {
+      image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=800&fit=crop",
+      title: "Traditional Shaves",
+      subtitle: "Hot towel luxury experience"
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="min-h-screen bg-zinc-900">
@@ -58,24 +84,26 @@ const BarberShop = () => {
         </div>
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Slideshow */}
       <section className="relative h-screen mt-16">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&h=800&fit=crop"
-            alt="Barber shop"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
-        </div>
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 transition-opacity duration-1000"
+            style={{ opacity: currentSlide === index ? 1 : 0 }}
+          >
+            <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent" />
+          </div>
+        ))}
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center text-white max-w-4xl px-6">
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight">
-              Classic Cuts
+              {slides[currentSlide].title}
             </h1>
             <p className="text-2xl md:text-3xl mb-12 text-gray-300">
-              Timeless style, modern precision
+              {slides[currentSlide].subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-10 py-4 bg-amber-500 text-zinc-900 font-bold text-lg rounded cursor-pointer transition-all hover:bg-amber-400">
@@ -90,6 +118,19 @@ const BarberShop = () => {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className="w-3 h-3 rounded-full transition-all cursor-pointer"
+              style={{
+                background: currentSlide === index ? '#f59e0b' : '#52525b'
+              }}
+            />
+          ))}
         </div>
       </section>
     </div>
