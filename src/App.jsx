@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Phone, MapPin, Clock, Scissors, Star, Menu, X } from 'lucide-react';
+import { Phone, MapPin, Clock, Scissors, Star, ChevronRight, Menu, X } from 'lucide-react';
 
 const BarberShop = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedService, setSelectedService] = useState(null);
 
   const slides = [
     {
@@ -20,6 +21,37 @@ const BarberShop = () => {
       image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=800&fit=crop",
       title: "Traditional Shaves",
       subtitle: "Hot towel luxury experience"
+    }
+  ];
+
+  const services = [
+    {
+      name: "Signature Cut",
+      price: "$35",
+      duration: "30 min",
+      description: "Precision haircut with consultation, wash, and style",
+      image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=300&fit=crop"
+    },
+    {
+      name: "Beard Trim & Shape",
+      price: "$25",
+      duration: "20 min",
+      description: "Expert beard sculpting and hot towel treatment",
+      image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop"
+    },
+    {
+      name: "Hot Towel Shave",
+      price: "$40",
+      duration: "40 min",
+      description: "Traditional straight razor shave with premium products",
+      image: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&h=300&fit=crop"
+    },
+    {
+      name: "Cut + Beard Combo",
+      price: "$55",
+      duration: "50 min",
+      description: "Full service haircut and beard grooming package",
+      image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=300&fit=crop"
     }
   ];
 
@@ -162,8 +194,46 @@ const BarberShop = () => {
           </div>
         </div>
       </section>
+
+      {/* Services */}
+      <section id="services" className="py-24 px-6 bg-zinc-900">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-white mb-4">Our Services</h2>
+            <p className="text-xl text-gray-400">Premium grooming for the modern gentleman</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="group relative bg-zinc-800 rounded-lg overflow-hidden cursor-pointer transition-all hover:scale-105"
+                onClick={() => setSelectedService(selectedService === index ? null : index)}
+              >
+                <div className="flex flex-col sm:flex-row">
+                  <div className="w-full sm:w-1/3 h-48 sm:h-auto">
+                    <img src={service.image} alt={service.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex-1 p-6">
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-2xl font-bold text-white">{service.name}</h3>
+                      <div className="text-right">
+                        <p className="text-3xl font-bold text-amber-500">{service.price}</p>
+                        <p className="text-sm text-gray-400">{service.duration}</p>
+                      </div>
+                    </div>
+                    <p className="text-gray-400 leading-relaxed">{service.description}</p>
+                    <button className="mt-4 text-amber-500 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                      Book This Service <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-
 export default BarberShop;
