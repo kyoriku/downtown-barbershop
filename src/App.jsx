@@ -55,6 +55,27 @@ const BarberShop = () => {
     }
   ];
 
+  const barbers = [
+    {
+      name: "Mike Thompson",
+      specialty: "Classic Cuts & Traditional Shaves",
+      experience: "15 years",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=400&fit=crop&crop=face"
+    },
+    {
+      name: "Tony Rodriguez",
+      specialty: "Modern Fades & Beard Design",
+      experience: "8 years",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face"
+    },
+    {
+      name: "Sam Wilson",
+      specialty: "Precision Styling & Color",
+      experience: "12 years",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=400&fit=crop&crop=face"
+    }
+  ];
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -223,7 +244,7 @@ const BarberShop = () => {
                       </div>
                     </div>
                     <p className="text-gray-400 leading-relaxed">{service.description}</p>
-                    <button className="mt-4 text-amber-500 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
+                    <button className="mt-4 text-amber-500 font-semibold flex items-center gap-2 hover:gap-3 cursor-pointer transition-all">
                       Book This Service <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -233,7 +254,36 @@ const BarberShop = () => {
           </div>
         </div>
       </section>
+
+      {/* Barbers */}
+      <section id="barbers" className="py-24 px-6 bg-zinc-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-white mb-4">Expert Barbers</h2>
+            <p className="text-xl text-gray-400">Skilled craftsmen dedicated to your style</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {barbers.map((barber, index) => (
+              <div key={index} className="text-center group">
+                <div className="relative mb-6 overflow-hidden rounded-lg">
+                  <img
+                    src={barber.image}
+                    alt={barber.name}
+                    className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">{barber.name}</h3>
+                <p className="text-amber-500 font-semibold mb-2">{barber.specialty}</p>
+                <p className="text-gray-400">{barber.experience} experience</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
 export default BarberShop;
