@@ -83,6 +83,11 @@ const BarberShop = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="min-h-screen bg-zinc-900">
       {/* Header */}
@@ -98,6 +103,7 @@ const BarberShop = () => {
               {['services', 'barbers', 'gallery', 'contact'].map((item) => (
                 <button
                   key={item}
+                  onClick={() => scrollToSection(item)}
                   className="text-gray-300 hover:text-amber-500 transition-colors capitalize font-medium cursor-pointer"
                 >
                   {item}
@@ -109,7 +115,10 @@ const BarberShop = () => {
               <a href="tel:1234567890" className="text-gray-300 hover:text-amber-500 transition-colors">
                 (123) 456-7890
               </a>
-              <button className="px-6 py-2 bg-amber-500 text-zinc-900 font-semibold rounded cursor-pointer transition-all hover:bg-amber-400">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="px-6 py-2 bg-amber-500 text-zinc-900 font-semibold rounded cursor-pointer transition-all hover:bg-amber-400"
+              >
                 Book Now
               </button>
             </div>
@@ -124,6 +133,7 @@ const BarberShop = () => {
               {['services', 'barbers', 'gallery', 'contact'].map((item) => (
                 <button
                   key={item}
+                  onClick={() => scrollToSection(item)}
                   className="block w-full text-left py-3 text-gray-300 hover:text-amber-500 capitalize cursor-pointer"
                 >
                   {item}
@@ -159,7 +169,10 @@ const BarberShop = () => {
               {slides[currentSlide].subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-10 py-4 bg-amber-500 text-zinc-900 font-bold text-lg rounded cursor-pointer transition-all hover:bg-amber-400">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="px-10 py-4 bg-amber-500 text-zinc-900 font-bold text-lg rounded cursor-pointer transition-all hover:bg-amber-400"
+              >
                 Book Appointment
               </button>
               <a
@@ -202,7 +215,7 @@ const BarberShop = () => {
               <MapPin className="w-6 h-6" />
               <div>
                 <p className="font-bold">Downtown Toronto</p>
-                <p className="text-sm">123 Street Name</p>
+                <p className="text-sm">123 Main Street</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -244,7 +257,10 @@ const BarberShop = () => {
                       </div>
                     </div>
                     <p className="text-gray-400 leading-relaxed">{service.description}</p>
-                    <button className="mt-4 text-amber-500 font-semibold flex items-center gap-2 hover:gap-3 cursor-pointer transition-all">
+                    <button
+                      onClick={() => scrollToSection('contact')}
+                      className="mt-4 text-amber-500 font-semibold flex items-center gap-2 hover:gap-3 transition-all"
+                    >
                       Book This Service <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -396,7 +412,7 @@ const BarberShop = () => {
             <div className="bg-zinc-800 p-8 rounded-lg">
               <MapPin className="w-8 h-8 text-amber-500 mx-auto mb-4" />
               <h3 className="text-white font-bold mb-2">Location</h3>
-              <p className="text-gray-400">123 Street Name<br />Toronto, ON M5V 1A1</p>
+              <p className="text-gray-400">123 Main Street<br />Toronto, ON M5V 1A1</p>
             </div>
             <div className="bg-zinc-800 p-8 rounded-lg">
               <Phone className="w-8 h-8 text-amber-500 mx-auto mb-4" />
