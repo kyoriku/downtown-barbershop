@@ -321,6 +321,70 @@ const BarberShop = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <section className="py-24 px-6 bg-zinc-800">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-white mb-4">What Clients Say</h2>
+            <div className="flex justify-center gap-1 mb-2">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 fill-amber-500 text-amber-500" />
+              ))}
+            </div>
+            <p className="text-xl text-gray-400">Rated 4.9/5 on Google</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                name: "John Martinez",
+                text: "Best barbershop in Toronto. Mike has been cutting my hair for 5 years and I wouldn't trust anyone else. Professional, friendly, and always delivers.",
+                initial: "JM",
+                rating: 5
+              },
+              {
+                name: "David Chen",
+                text: "The hot towel shave is incredible. Tony takes his time and the experience is worth every penny. This place sets the standard for barbering.",
+                initial: "DC",
+                rating: 5
+              },
+              {
+                name: "Robert Kim",
+                text: "Finally found a barber who understands what I want. Sam is a master at fades and the shop atmosphere is perfect. Always leave looking sharp.",
+                initial: "RK",
+                rating: 5
+              },
+              {
+                name: "Marcus Johnson",
+                text: "Walk-in friendly and never disappointed. The attention to detail is what sets them apart. Fair prices for premium quality work.",
+                initial: "MJ",
+                rating: 4
+              }
+            ].map((review, i) => (
+              <div key={i} className="bg-zinc-900 p-8 rounded-lg">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-zinc-900 font-bold text-lg">
+                    {review.initial}
+                  </div>
+                  <div>
+                    <p className="font-bold text-white">{review.name}</p>
+                    <div className="flex gap-1">
+                      {Array.from({ length: review.rating }).map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                      ))}
+                      {Array.from({ length: 5 - review.rating }).map((_, i) => (
+                        <Star key={`empty-${i}`} className="w-4 h-4 text-gray-600" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="text-gray-400 leading-relaxed">"{review.text}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
