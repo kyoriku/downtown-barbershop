@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, MapPin, Clock, Instagram, Scissors, Star, ChevronRight, Menu, X } from 'lucide-react';
+import { Phone, MapPin, Clock, Instagram, Facebook, Scissors, Star, ChevronRight, Menu, X } from 'lucide-react';
 
 const BarberShop = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -385,6 +385,63 @@ const BarberShop = () => {
           </div>
         </div>
       </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-24 px-6 bg-zinc-900">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl font-bold text-white mb-6">Visit Us Today</h2>
+          <p className="text-xl text-gray-400 mb-12">Walk-ins welcome or call ahead to reserve your spot</p>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-zinc-800 p-8 rounded-lg">
+              <MapPin className="w-8 h-8 text-amber-500 mx-auto mb-4" />
+              <h3 className="text-white font-bold mb-2">Location</h3>
+              <p className="text-gray-400">123 Street Name<br />Toronto, ON M5V 1A1</p>
+            </div>
+            <div className="bg-zinc-800 p-8 rounded-lg">
+              <Phone className="w-8 h-8 text-amber-500 mx-auto mb-4" />
+              <h3 className="text-white font-bold mb-2">Phone</h3>
+              <a href="tel:1234567890" className="text-amber-500 hover:text-amber-400">
+                (123) 456-7890
+              </a>
+            </div>
+            <div className="bg-zinc-800 p-8 rounded-lg">
+              <Clock className="w-8 h-8 text-amber-500 mx-auto mb-4" />
+              <h3 className="text-white font-bold mb-2">Hours</h3>
+              <p className="text-gray-400">Mon-Sat: 9AM - 7PM<br />Sunday: Closed</p>
+            </div>
+          </div>
+
+          <a
+            href="tel:1234567890"
+            className="inline-flex items-center gap-3 px-12 py-5 bg-amber-500 text-zinc-900 font-bold text-xl rounded cursor-pointer transition-all hover:bg-amber-400"
+          >
+            <Phone className="w-6 h-6" />
+            Call (123) 456-7890
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black text-gray-400 py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-3">
+              <Scissors className="w-6 h-6 text-amber-500" />
+              <span className="text-white font-bold">Downtown Barber Shop</span>
+            </div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-amber-500 transition-colors cursor-pointer">
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a href="#" className="hover:text-amber-500 transition-colors cursor-pointer">
+                <Facebook className="w-6 h-6" />
+              </a>
+            </div>
+            <p className="text-sm">© 2025 Downtown Barber Shop. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
