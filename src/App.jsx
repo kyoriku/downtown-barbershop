@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Phone, MapPin, Clock, Scissors, Star, ChevronRight, Menu, X } from 'lucide-react';
+import { Phone, MapPin, Clock, Instagram, Scissors, Star, ChevronRight, Menu, X } from 'lucide-react';
 
 const BarberShop = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -277,6 +277,45 @@ const BarberShop = () => {
                 <h3 className="text-2xl font-bold text-white mb-2">{barber.name}</h3>
                 <p className="text-amber-500 font-semibold mb-2">{barber.specialty}</p>
                 <p className="text-gray-400">{barber.experience} experience</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Gallery */}
+      <section id="gallery" className="py-24 px-6 bg-zinc-900">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-white mb-4">Recent Work</h2>
+            <p className="text-xl text-gray-400 flex items-center justify-center gap-2">
+              Follow us on Instagram <Instagram className="w-5 h-5 text-amber-500" />
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400",
+              "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400",
+              "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400",
+              "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400",
+              "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400",
+              "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400",
+              "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=400",
+              "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400"
+            ].map((img, i) => (
+              <div
+                key={i}
+                className="relative aspect-square overflow-hidden rounded group cursor-pointer"
+              >
+                <img
+                  src={img}
+                  alt={`Gallery ${i + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-zinc-900/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <Instagram className="w-8 h-8 text-white" />
+                </div>
               </div>
             ))}
           </div>
