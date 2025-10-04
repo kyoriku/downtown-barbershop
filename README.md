@@ -24,7 +24,7 @@ A professional barbershop website designed to showcase services, build credibili
 **Note**: This is a demonstration project showcasing modern web development for service-based businesses. All business details, contact information, and testimonials are placeholder content.
 
 ### Deployed Site
-Visit the live website at: [link here]
+Visit the live website at: [https://downtown-barbershop.netlify.app](https://downtown-barbershop.netlify.app)
 
 ## Features
 - **Auto-rotating Hero Slideshow**: Three slides with smooth fade transitions, manual navigation, and dynamic content
@@ -57,8 +57,8 @@ This website implements modern web development practices:
 - **Development**: Incremental feature development with structured git history
 
 ## Roadmap
-- [ ] Add screenshot images to README
-- [ ] Deploy to production (Vercel/Netlify)
+- [x] Add screenshot images to README
+- [ ] Deploy to production
 - [ ] Implement contact form with backend integration
 - [ ] Add online booking system
 - [ ] Integrate Google Maps for location
@@ -71,7 +71,6 @@ This website implements modern web development practices:
 ## Acknowledgments
 - Images sourced from [Unsplash](https://unsplash.com/)
 - Icons from [Lucide React](https://lucide.dev/)
-- Built with [React](https://react.dev/) and [Tailwind CSS](https://tailwindcss.com/)
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge&logo=mit)](https://opensource.org/licenses/MIT)
