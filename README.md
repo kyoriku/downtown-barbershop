@@ -58,7 +58,7 @@ This website implements modern web development practices:
 
 ## Roadmap
 - [x] Add screenshot images to README
-- [ ] Deploy to production
+- [x] Deploy to production
 - [ ] Implement contact form with backend integration
 - [ ] Add online booking system
 - [ ] Integrate Google Maps for location
@@ -69,7 +69,7 @@ This website implements modern web development practices:
 - [ ] Create admin dashboard for content management
 
 ## Acknowledgments
-- Images sourced from [Unsplash](https://unsplash.com/)
+- Images from [Unsplash](https://unsplash.com/)
 - Icons from [Lucide React](https://lucide.dev/)
 
 ## License
