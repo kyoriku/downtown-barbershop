@@ -25,32 +25,32 @@ const BarberShop = () => {
     }
   ];
 
-  const services = [
+const services = [
     {
       name: "Signature Cut",
       price: "$35",
-      duration: "30 min",
+      // duration: "30 min",
       description: "Precision haircut with consultation, wash, and style",
       image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=300&fit=crop"
     },
     {
       name: "Beard Trim & Shape",
       price: "$25",
-      duration: "20 min",
+      // duration: "20 min",
       description: "Expert beard sculpting and hot towel treatment",
       image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop"
     },
     {
       name: "Hot Towel Shave",
       price: "$40",
-      duration: "40 min",
-      description: "Traditional straight razor shave with premium products",
+      // duration: "40 min",
+      description: "Traditional razor shave with premium products",
       image: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&h=300&fit=crop"
     },
     {
       name: "Cut + Beard Combo",
       price: "$55",
-      duration: "50 min",
+      // duration: "50 min",
       description: "Full service haircut and beard grooming package",
       image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=300&fit=crop"
     }
@@ -258,7 +258,7 @@ const BarberShop = () => {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group relative bg-zinc-800 rounded-lg overflow-hidden cursor-pointer transition-all hover:scale-105"
+                className="group relative bg-zinc-800 rounded-lg overflow-hidden transition-all hover:scale-105"
                 onClick={() => setSelectedService(selectedService === index ? null : index)}
               >
                 <div className="flex flex-col sm:flex-row">
@@ -270,13 +270,13 @@ const BarberShop = () => {
                       <h3 className="text-2xl font-bold text-white">{service.name}</h3>
                       <div className="text-right">
                         <p className="text-3xl font-bold text-amber-500">{service.price}</p>
-                        <p className="text-sm text-gray-400">{service.duration}</p>
+                        {/* <p className="text-sm text-gray-400">{service.duration}</p> */}
                       </div>
                     </div>
                     <p className="text-gray-400 leading-relaxed">{service.description}</p>
                     <button
                       onClick={() => scrollToSection('contact')}
-                      className="mt-4 text-amber-500 font-semibold flex items-center gap-2 hover:gap-3 transition-all"
+                      className="mt-4 text-amber-500 font-semibold flex items-center gap-2 hover:gap-3 transition-all cursor-pointer"
                     >
                       Book This Service <ChevronRight className="w-4 h-4" />
                     </button>
