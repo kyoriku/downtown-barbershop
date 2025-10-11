@@ -1,81 +1,119 @@
 import { useState, useEffect, useRef } from 'react';
 import { Phone, MapPin, Clock, Instagram, Facebook, Scissors, Star, ChevronRight, Menu, X } from 'lucide-react';
 
+const slides = [
+  {
+    image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&h=800&fit=crop",
+    title: "Classic Cuts",
+    subtitle: "Timeless style, modern precision"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1200&h=800&fit=crop",
+    title: "Expert Beard Work",
+    subtitle: "Shape and style with care"
+  },
+  {
+    image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=800&fit=crop",
+    title: "Traditional Shaves",
+    subtitle: "Hot towel luxury experience"
+  }
+];
+
+const services = [
+  {
+    name: "Signature Cut",
+    price: "$35",
+    // duration: "30 min",
+    description: "Precision haircut with consultation, wash, and style",
+    image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=300&fit=crop"
+  },
+  {
+    name: "Beard Trim & Shape",
+    price: "$25",
+    // duration: "20 min",
+    description: "Expert beard sculpting and hot towel treatment",
+    image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop"
+  },
+  {
+    name: "Hot Towel Shave",
+    price: "$40",
+    // duration: "40 min",
+    description: "Traditional razor shave with premium products",
+    image: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&h=300&fit=crop"
+  },
+  {
+    name: "Cut + Beard Combo",
+    price: "$55",
+    // duration: "50 min",
+    description: "Full service haircut and beard grooming package",
+    image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=300&fit=crop"
+  }
+];
+
+const barbers = [
+  {
+    name: "Mike Thompson",
+    specialty: "Classic Cuts & Traditional Shaves",
+    experience: "15 years",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=400&fit=crop&crop=face"
+  },
+  {
+    name: "Tony Rodriguez",
+    specialty: "Modern Fades & Beard Design",
+    experience: "8 years",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face"
+  },
+  {
+    name: "Sam Wilson",
+    specialty: "Precision Styling & Color",
+    experience: "12 years",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=400&fit=crop&crop=face"
+  }
+];
+
+const galleryImages = [
+  "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400",
+  "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400",
+  "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400",
+  "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400",
+  "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400",
+  "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400",
+  "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=400",
+  "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400"
+];
+
+const testimonials = [
+  {
+    name: "John Martinez",
+    text: "Best barbershop in Toronto. Mike has been cutting my hair for 5 years and I wouldn't trust anyone else. Professional, friendly, and always delivers.",
+    initial: "JM",
+    rating: 5
+  },
+  {
+    name: "David Chen",
+    text: "The hot towel shave is incredible. Tony takes his time and the experience is worth every penny. This place sets the standard for barbering.",
+    initial: "DC",
+    rating: 5
+  },
+  {
+    name: "Robert Kim",
+    text: "Finally found a barber who understands what I want. Sam is a master at fades and the shop atmosphere is perfect. Always leave looking sharp.",
+    initial: "RK",
+    rating: 5
+  },
+  {
+    name: "Marcus Johnson",
+    text: "Walk-in friendly and never disappointed. The attention to detail is what sets them apart. Fair prices for premium quality work.",
+    initial: "MJ",
+    rating: 4
+  }
+];
+
 const BarberShop = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedService, setSelectedService] = useState(null);
   const mobileMenuRef = useRef(null);
-
-  const slides = [
-    {
-      image: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&h=800&fit=crop",
-      title: "Classic Cuts",
-      subtitle: "Timeless style, modern precision"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1200&h=800&fit=crop",
-      title: "Expert Beard Work",
-      subtitle: "Shape and style with care"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1200&h=800&fit=crop",
-      title: "Traditional Shaves",
-      subtitle: "Hot towel luxury experience"
-    }
-  ];
-
-const services = [
-    {
-      name: "Signature Cut",
-      price: "$35",
-      // duration: "30 min",
-      description: "Precision haircut with consultation, wash, and style",
-      image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=300&fit=crop"
-    },
-    {
-      name: "Beard Trim & Shape",
-      price: "$25",
-      // duration: "20 min",
-      description: "Expert beard sculpting and hot towel treatment",
-      image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop"
-    },
-    {
-      name: "Hot Towel Shave",
-      price: "$40",
-      // duration: "40 min",
-      description: "Traditional razor shave with premium products",
-      image: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&h=300&fit=crop"
-    },
-    {
-      name: "Cut + Beard Combo",
-      price: "$55",
-      // duration: "50 min",
-      description: "Full service haircut and beard grooming package",
-      image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=300&fit=crop"
-    }
-  ];
-
-  const barbers = [
-    {
-      name: "Mike Thompson",
-      specialty: "Classic Cuts & Traditional Shaves",
-      experience: "15 years",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Tony Rodriguez",
-      specialty: "Modern Fades & Beard Design",
-      experience: "8 years",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Sam Wilson",
-      specialty: "Precision Styling & Color",
-      experience: "12 years",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=400&fit=crop&crop=face"
-    }
-  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -327,16 +365,7 @@ const services = [
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400",
-              "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400",
-              "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400",
-              "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400",
-              "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400",
-              "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400",
-              "https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=400",
-              "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400"
-            ].map((img, i) => (
+            {galleryImages.map((img, i) => (
               <div
                 key={i}
                 className="relative aspect-square overflow-hidden rounded group cursor-pointer"
@@ -369,32 +398,7 @@ const services = [
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                name: "John Martinez",
-                text: "Best barbershop in Toronto. Mike has been cutting my hair for 5 years and I wouldn't trust anyone else. Professional, friendly, and always delivers.",
-                initial: "JM",
-                rating: 5
-              },
-              {
-                name: "David Chen",
-                text: "The hot towel shave is incredible. Tony takes his time and the experience is worth every penny. This place sets the standard for barbering.",
-                initial: "DC",
-                rating: 5
-              },
-              {
-                name: "Robert Kim",
-                text: "Finally found a barber who understands what I want. Sam is a master at fades and the shop atmosphere is perfect. Always leave looking sharp.",
-                initial: "RK",
-                rating: 5
-              },
-              {
-                name: "Marcus Johnson",
-                text: "Walk-in friendly and never disappointed. The attention to detail is what sets them apart. Fair prices for premium quality work.",
-                initial: "MJ",
-                rating: 4
-              }
-            ].map((review, i) => (
+            {testimonials.map((review, i) => (
               <div key={i} className="bg-zinc-900 p-8 rounded-lg">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-zinc-900 font-bold text-lg">
