@@ -23,28 +23,24 @@ const services = [
   {
     name: "Signature Cut",
     price: "$35",
-    // duration: "30 min",
     description: "Precision haircut with consultation, wash, and style",
     image: "https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&h=300&fit=crop"
   },
   {
     name: "Beard Trim & Shape",
     price: "$25",
-    // duration: "20 min",
     description: "Expert beard sculpting and hot towel treatment",
     image: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop"
   },
   {
     name: "Hot Towel Shave",
     price: "$40",
-    // duration: "40 min",
     description: "Traditional razor shave with premium products",
     image: "https://images.unsplash.com/photo-1621607512214-68297480165e?w=400&h=300&fit=crop"
   },
   {
     name: "Cut + Beard Combo",
     price: "$55",
-    // duration: "50 min",
     description: "Full service haircut and beard grooming package",
     image: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&h=300&fit=crop"
   }
@@ -250,6 +246,8 @@ const BarberShop = () => {
               style={{
                 background: currentSlide === index ? '#f59e0b' : '#52525b'
               }}
+              aria-label={`Go to slide ${index + 1}: ${slides[index].title}`}
+              aria-current={currentSlide === index ? 'true' : 'false'}
             />
           ))}
         </div>
@@ -308,7 +306,6 @@ const BarberShop = () => {
                       <h3 className="text-2xl font-bold text-white">{service.name}</h3>
                       <div className="text-right">
                         <p className="text-3xl font-bold text-amber-500">{service.price}</p>
-                        {/* <p className="text-sm text-gray-400">{service.duration}</p> */}
                       </div>
                     </div>
                     <p className="text-gray-400 leading-relaxed">{service.description}</p>
@@ -468,10 +465,10 @@ const BarberShop = () => {
               <span className="text-white font-bold">Downtown Barber Shop</span>
             </div>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-amber-500 transition-colors cursor-pointer">
+              <a href="#" className="hover:text-amber-500 transition-colors cursor-pointer" aria-label="Follow us on Instagram">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:text-amber-500 transition-colors cursor-pointer">
+              <a href="#" className="hover:text-amber-500 transition-colors cursor-pointer" aria-label="Follow us on Facebook">
                 <Facebook className="w-6 h-6" />
               </a>
             </div>
