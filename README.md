@@ -2,7 +2,7 @@
 
 A modern barbershop landing page showcasing services, team profiles, and booking capabilities.
 
-**[Live Site](https://downtown-barbershop.netlify.app)** | **Tech Stack:** React, Tailwind CSS, Vite
+**[Live Site](https://downtown-barbershop.netlify.app)** | **Tech Stack:** React, Tailwind CSS
 
 **Key Features:** Auto-rotating hero carousel • Responsive design with mobile nav • Smooth scroll navigation • Service pricing cards • Instagram gallery grid
 
